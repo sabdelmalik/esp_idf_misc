@@ -72,8 +72,8 @@ esp_err_t get_header(httpd_req_t *req, const char *header_name, char *buf, size_
   {
     if ((hdr_len + 1) > buf_len)
     {
-      ESP_LOGE(TAG, "passed buffer size (%d) too small. Heder length = %d", buf_len, hdr_len + 1);
-      //httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Memory allocation failed");
+      ESP_LOGE(TAG, "passed buffer size (%d) too small. Header length = %d", buf_len, hdr_len + 1);
+      // httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Memory allocation failed");
       return ESP_ERR_INVALID_SIZE;
     }
     /* Copy null terminated value string into buffer */
@@ -92,7 +92,7 @@ esp_err_t get_header(httpd_req_t *req, const char *header_name, char *buf, size_
 }
 
 esp_err_t getMD5(uint8_t *data, uint16_t len, char *output)
-{ //33 bytes or more
+{ // 33 bytes or more
   mbedtls_md5_context _ctx;
   uint8_t i;
   uint8_t *buf = (uint8_t *)malloc(16);
